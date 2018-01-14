@@ -8,7 +8,7 @@ export function fetchMeetupEvent(city, country_code, meetup_category) {
     return {
         type: "FETCH_MEETUP_EVENTS",
         payload: axios.get(meetupUrl, {
-                    headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }
+                    headers: { "Access-Control-Allow-Origin": "https://akojopo.herokuapp.com" }
                 })
     };
 }
@@ -20,7 +20,7 @@ export function fetchMeetupByCategory(city, country_code, category) {
     return {
         type: "FETCH_MEETUP_EVENTS",
         payload: axios.get(meetupUrl, {
-                    headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }
+                    headers: { "Access-Control-Allow-Origin": "https://akojopo.herokuapp.com" }
                 })
     };
 }
@@ -31,7 +31,7 @@ export function fetchMeetupByLocation(city, country_code, meetup_category) {
     return {
         type: "FETCH_MEETUP_EVENTS",
         payload: axios.get(meetupUrl, {
-                    headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }
+                    headers: { "Access-Control-Allow-Origin": "https://akojopo.herokuapp.com" }
                 })
     };
 }

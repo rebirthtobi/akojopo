@@ -10,7 +10,7 @@ export function fetchEvent(city, country_code, country_name, meetup_category, ev
         type: "FETCH_EVENTS",
         payload: axios.all([
             axios.get(meetupUrl, {
-                headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }
+                headers: { "Access-Control-Allow-Origin": "https://akojopo.herokuapp.com" }
             }),
             axios.get(eventbriteUrl)
         ])
@@ -27,7 +27,7 @@ export function fetchByCategory(city, country_code, country_name, category) {
         type: "FETCH_EVENTS",
         payload: axios.all([
             axios.get(meetupUrl, {
-                headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }
+                headers: { "Access-Control-Allow-Origin": "https://akojopo.herokuapp.com" }
             }),
             axios.get(eventbriteUrl)
         ])
@@ -42,7 +42,7 @@ export function fetchByLocation(city, country_code, country_name, meetup_categor
         type: "FETCH_EVENTS",
         payload: axios.all([
             axios.get(meetupUrl, {
-                headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }
+                headers: { "Access-Control-Allow-Origin": "https://akojopo.herokuapp.com" }
             }),
             axios.get(eventbriteUrl)
         ])
