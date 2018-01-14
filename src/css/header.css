@@ -1,0 +1,21 @@
+body{
+    background-color: #eee;
+}
+.navbar-burger{
+    margin-left: 0px;
+    border: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+a.navbar-item.is-active{
+    background-color: aliceblue !important;
+}
+#registration-link{
+    margin-left: auto;
+}
+.profile-pic{
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%; 
+    border-radius: 50%;
+}

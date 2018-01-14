@@ -1,0 +1,32 @@
+{
+  "name": "dev-helper",
+  "homepage": "https://rebirthtobi.github.io/akojopo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.17.1",
+    "crypto-js": "^3.1.9-1",
+    "dompurify": "^1.0.3",
+    "gh-pages": "^1.1.0",
+    "history": "^4.7.2",
+    "jsonwebtoken": "^8.1.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.16",
+    "redux": "^3.7.2",
+    "redux-promise-middleware": "^5.0.0",
+    "redux-thunk": "^2.2.0",
+    "validator": "^9.2.0"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

@@ -1,0 +1,34 @@
+.event-body{
+    padding-left: 10px;
+}
+.event-footer{
+    border-top: 1px solid #eee;
+    margin-top: 5px;
+    padding: 2px;
+    padding-left: 32px;
+}
+.event-item{
+    background-color: #fff;
+}
+.event-response{
+    padding-right: 5px;
+}
+.card-content{
+    padding: .4rem;
+}
+.filer-box{
+    padding: 5px;
+}
+.filter{
+    padding-bottom: 5px;
+    border-bottom: 0.5px solid #D2D6DF;
+}
+.filter-icon{
+    font-weight: normal;
+}
+.categoryElement{
+    cursor: pointer;
+}
+.categoryElement:hover, .selected{
+    color: #000;
+}
