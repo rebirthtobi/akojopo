@@ -20,10 +20,10 @@ class Container extends Component {
 	render() {
 		return (
             <div>
-                <Nav auth={this.props.auth} logout={this.props.logout}/>
-                    <Route exact path='/' component={All} />
-                    <Route exact path='/meetup' component={Meetup} />
-                    <Route exact path='/eventbrite' component={Eventbrite} />
+                <Nav auth={this.props.auth} logout={this.props.logout} path={this.props.location.pathname}/>
+                <Route exact path='/' component={All} />
+                <Route exact path='/meetup' component={Meetup} />
+                <Route exact path='/eventbrite' component={Eventbrite} />
                 <Footer />
             </div>
 		);

@@ -113,10 +113,10 @@ class Nav extends PureComponent {
                         <NavLink exact to={'/'} className="navbar-item" activeClassName="is-active">
                             All
                         </NavLink>
-                        <NavLink to={'/meetup'} exact className="navbar-item" activeClassName="is-active">
+                        <NavLink exact to={'/meetup'} exact className="navbar-item" activeClassName="is-active">
                             Meetup
                         </NavLink>
-                        <NavLink to={'/eventbrite'} exact className="navbar-item" activeClassName="is-active">
+                        <NavLink exact to={'/eventbrite'} exact className="navbar-item" activeClassName="is-active">
                             Eventbrite
                         </NavLink>
                         {profile}
@@ -128,7 +128,8 @@ class Nav extends PureComponent {
 }
 
 Nav.propTypes = {
-    auth: PropTypes.bool.isRequired
+    auth: PropTypes.bool.isRequired,
+    logout: PropTypes.func.isRequired,
 }
 
 export default Nav;
