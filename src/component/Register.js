@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import dompurify from 'dompurify';
 import validator from 'validator';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { register } from './../actions/authActions';
 import './../css/register.css';

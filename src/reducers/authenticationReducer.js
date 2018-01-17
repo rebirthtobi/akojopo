@@ -19,14 +19,14 @@ export default function authentication (state = defaultState.auth, action) {
                 loading: false,
                 error: true,
                 auth: false,
-                message: response.error
+                message: response.data.error
             };
         }
         case "USER_REGISTRATION_FULFILLED": {
             let response = action.payload;
 
             if (response.status == 201) {
-                localStorage.setItem('akojopo-lg', JSON.stringify(response.token));
+                localStorage.setItem('akojopo-lg', JSON.stringify(response.data.token));
                 return {
                     ...state,
                     loading: false,
@@ -105,7 +105,7 @@ export default function authentication (state = defaultState.auth, action) {
         }
         case "TOKEN_RENEW_FULFILLED": {
             let response = action.payload;            
-            localStorage.setItem('akojopo-lg', JSON.stringify(response.token));
+            localStorage.setItem('akojopo-lg', JSON.stringify(response.data.token));
             
             return {
                 ...state,

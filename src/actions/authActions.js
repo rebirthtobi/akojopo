@@ -31,11 +31,13 @@ export function register(name, email, password, country, city) {
 }
 
 export function logout() {
-    let token = JSON.parse(localStorage.getItem('akojopo-lg'));
-    if (token) {
-        localStorage.removeItem('akojopo-lg');
+    if (typeof localStorage.getItem('akojopo-lg') !== "undefined") {
+        let token = JSON.parse(localStorage.getItem('akojopo-lg'));
+        if (token) {
+            localStorage.removeItem('akojopo-lg');
+        }
     }
-
+    
     return {
         type: "USER_LOGOUT",
         payload: {
