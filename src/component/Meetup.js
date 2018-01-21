@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchMeetupEvent, fetchMeetupByCategory } from './../actions/meetupActions';
+import { nextPage, prevPage } from './../actions/paginationActions';
 import Event from './Event';
 import Sidebar from './Sidebar';
 import Loading from './Loading';
@@ -22,6 +23,14 @@ class Meetup extends PureComponent {
 
     searchByCategory = (category) => {
         this.props.fetchMeetupByCategory(this.props.city, this.props.country.code, category);
+    }
+    
+    handleNextPage = () => {
+        this.props.nextPage();
+    }
+
+    handlePrevPage = () => {
+        this.props.prevPage();
     }
 
     render() {
@@ -73,7 +82,11 @@ Meetup.propTypes = {
 		noData: PropTypes.bool.isRequired
     }),
     eventdata: PropTypes.object.isRequired,
-    page: PropTypes.object.isRequired
+    page: PropTypes.object.isRequired,   
+    fetchEventbriteEvent: PropTypes.func.isRequired,
+    fetchEventbriteByCategory: PropTypes.func.isRequired,    
+    nextPage: PropTypes.func.isRequired,
+    prevPage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -83,7 +96,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => (
     {
         fetchMeetupEvent: (city, country_code, meetup_category) => dispatch(fetchMeetupEvent(city, country_code, meetup_category)),
-        fetchMeetupByCategory: (city, country_code, category) => dispatch(fetchMeetupByCategory(city, country_code, category))
+        fetchMeetupByCategory: (city, country_code, category) => dispatch(fetchMeetupByCategory(city, country_code, category)),
+        nextPage: (page) => dispatch(nextPage(page)),
+        prevPage: (page) => dispatch(prevPage(page))
     }
 );
   

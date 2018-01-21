@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import dompurify from 'dompurify';
 import validator from 'validator';
 import { connect } from 'react-redux';
-import { withRouter, Link} from 'react-router-dom';
+import { withRouter, Link, NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { login } from './../actions/authActions';
+import appimg from './../img/akojopo.png';
 import './../css/login.css';
 
 class Login extends Component {
@@ -120,6 +121,9 @@ class Login extends Component {
                     <section className="section">
                         <div className="columns">
                             <div className="column is-5 is-offset-3 has-text-centered">
+                                <NavLink exact to={'/'} className="is-4">
+                                    <img src={appimg} alt="confent" width="112" height="28" />
+                                </NavLink>
                                 <h4 className="title is-4">
                                     Login to Akojopo
                                 </h4>

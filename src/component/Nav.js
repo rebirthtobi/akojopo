@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom'
-//import './../js/nav.js';
+import { NavLink } from 'react-router-dom';
+import appimg from './../img/akojopo.png';
 import './../css/header.css';
 
 class Nav extends PureComponent {
@@ -14,7 +14,7 @@ class Nav extends PureComponent {
         let targeticon = document.querySelector('#navbar-burger-button');
         let targetId = targeticon.dataset.target;
         targeticon.classList.toggle('is-active');
-        let target = document.querySelector('#'+targetId).classList.toggle('is-active');
+        document.querySelector('#'+targetId).classList.toggle('is-active');
     }
 
     render() {
@@ -47,18 +47,12 @@ class Nav extends PureComponent {
                                     <span className="icon">
                                         <i className="fa fa-user-plus"></i>
                                     </span>
-                                    <span>
-                                        Register
-                                    </span>
                                 </NavLink>
                                 </p>
                                 <p className="control">
                                     <NavLink exact to={'/login'} className="button is-info is-outlined">
                                         <span className="icon">
-                                            <i className="fa fa-user"></i>
-                                        </span>
-                                        <span>
-                                            Login
+                                            <i className="fa fa-sign-in"></i>
                                         </span>
                                     </NavLink>
                                 </p>
@@ -74,13 +68,13 @@ class Nav extends PureComponent {
                                             </span>
                                             <span>
                                                 Register
-                                            </span>
+                                            </span> 
                                         </NavLink>
                                     </p>
                                     <p className="control">
                                         <NavLink exact to={'/login'} className="button is-info is-outlined">
                                             <span className="icon">
-                                                <i className="fa fa-user"></i>
+                                                <i className="fa fa-sign-in"></i>
                                             </span>
                                             <span>
                                                 Login
@@ -92,10 +86,10 @@ class Nav extends PureComponent {
         }
 
         return (
-            <nav className="navbar" role="navigation" aria-label="main navigation">
+            <nav className="navbar" aria-label="main navigation">
                 <div className="navbar-brand">
                     <NavLink exact to={'/'} className="navbar-item">
-                        <img src="https://bulma.io/images/bulma-logo.png" alt="confent" width="112" height="28" />
+                        <img src={appimg} alt="confent" width="112" height="28" />
                     </NavLink>
 
                     {regLink}
@@ -113,10 +107,10 @@ class Nav extends PureComponent {
                         <NavLink exact to={'/'} className="navbar-item" activeClassName="is-active">
                             All
                         </NavLink>
-                        <NavLink exact to={'/meetup'} exact className="navbar-item" activeClassName="is-active">
+                        <NavLink exact to={'/meetup'} className="navbar-item" activeClassName="is-active">
                             Meetup
                         </NavLink>
-                        <NavLink exact to={'/eventbrite'} exact className="navbar-item" activeClassName="is-active">
+                        <NavLink exact to={'/eventbrite'} className="navbar-item" activeClassName="is-active">
                             Eventbrite
                         </NavLink>
                         {profile}

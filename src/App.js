@@ -29,6 +29,8 @@ class App extends Component {
 export default App;
 
 //TODO: style the selected ctegory
-//TODO: pagination design and implementation
 //TODO: fix the map not showing up
 //TODO: fix search by location
+//TODO: profile page
+//TODO: event coming from the database
+//TODO: conect to eventbrite and meetup

@@ -119,6 +119,48 @@ export default function all (state = defaultState.event, action) {
                     }
                 };
             }            
+        }        
+        case "NEXT_PAGE": {
+            let current = state.eventdata.currentPage + 1;
+
+            if (current > state.eventdata.page_number) {
+                current = state.eventdata.page_number;
+            }
+
+            return {
+                ...state,
+                eventdata: {
+                    data: state.eventdata.data,
+                    currentPage: current,
+                    page_number: state.eventdata.page_number
+                },
+                page: {
+                    meetup: false,
+                    eventbrite: false,
+                    current: current
+                }
+            };
+        }
+        case "PREV_PAGE": {
+            let current = state.eventdata.currentPage - 1;
+
+            if (current <= 1) {
+                current = 1;
+            }
+
+            return {
+                ...state,
+                eventdata: {
+                    data: state.eventdata.data,
+                    currentPage: current,
+                    page_number: state.eventdata.page_number
+                },
+                page: {
+                    meetup: false,
+                    eventbrite: false,
+                    current: current
+                }
+            };
         }
         default: {
             return state;

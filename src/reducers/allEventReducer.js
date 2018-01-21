@@ -1,4 +1,5 @@
 import defaultState from './../config/default';
+import sortJsonArray from 'sort-json-array';
 
 export default function all (state = defaultState.event, action) {
     switch (action.type){
@@ -58,7 +59,8 @@ export default function all (state = defaultState.event, action) {
                         address: item.venue ? item.venue.name+', '+item.venue.city+', '+item.venue.localized_country_name : '',
                         time: time ? time.toLocaleTimeString()+', '+time.toLocaleDateString() : 'Not specified',
                         alt: 'meetup',
-                        tag: 'meetup'
+                        tag: 'meetup',
+                        tString: item.time,
                     });
                 });
 
@@ -76,7 +78,8 @@ export default function all (state = defaultState.event, action) {
                         address: item.venue.localized_address_display,
                         time: d.toLocaleTimeString()+', '+d.toDateString(),
                         alt: item.organizer.name,
-                        tag: 'eventbrite'
+                        tag: 'eventbrite',                        
+                        tString: d.getTime()
                     });
                 });
 
@@ -86,6 +89,7 @@ export default function all (state = defaultState.event, action) {
             };
 
             if (events.length > 0) {
+                sortJsonArray(events, 'tString');
                 let pages = Math.ceil(events.length/25);
                 let pagedata = [];
 
@@ -100,7 +104,6 @@ export default function all (state = defaultState.event, action) {
 
                     pagedata.push(data);
                 }
-
                 return {
                     ...state,
                     error: {
@@ -139,6 +142,48 @@ export default function all (state = defaultState.event, action) {
                     }
                 };
             }            
+        }
+        case "NEXT_PAGE": {
+            let current = state.eventdata.currentPage + 1;
+
+            if (current > state.eventdata.page_number) {
+                current = state.eventdata.page_number;
+            }
+
+            return {
+                ...state,
+                eventdata: {
+                    data: state.eventdata.data,
+                    currentPage: current,
+                    page_number: state.eventdata.page_number
+                },
+                page: {
+                    meetup: false,
+                    eventbrite: false,
+                    current: current
+                }
+            };
+        }
+        case "PREV_PAGE": {
+            let current = state.eventdata.currentPage - 1;
+
+            if (current <= 1) {
+                current = 1;
+            }
+
+            return {
+                ...state,
+                eventdata: {
+                    data: state.eventdata.data,
+                    currentPage: current,
+                    page_number: state.eventdata.page_number
+                },
+                page: {
+                    meetup: false,
+                    eventbrite: false,
+                    current: current
+                }
+            };
         }
         default: {
             return state;

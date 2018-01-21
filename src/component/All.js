@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchEvent, fetchByCategory } from './../actions/allEventActions';
+import { nextPage, prevPage } from './../actions/paginationActions';
 import Event from './Event';
 import Sidebar from './Sidebar';
 import Loading from './Loading';
@@ -16,6 +17,14 @@ class All extends PureComponent {
 
     searchByCategory = (category) => {
         this.props.fetchByCategory(this.props.city, this.props.country.code, this.props.country.name, category);
+    }
+
+    handleNextPage = () => {
+        this.props.nextPage();
+    }
+
+    handlePrevPage = () => {
+        this.props.prevPage();
     }
 
     render() {
@@ -38,7 +47,7 @@ class All extends PureComponent {
                 <section className="section">
                     <div className="columns">
                         <Sidebar searchByCategory = {this.searchByCategory} />
-                        <Event eventdata = {this.props.eventdata} />
+                        <Event eventdata = {this.props.eventdata} nextPage={this.handleNextPage} prevPage={this.handlePrevPage}/>
                     </div>
                 </section>
             );
@@ -67,7 +76,11 @@ All.propTypes = {
 		noData: PropTypes.bool.isRequired
     }),
     eventdata: PropTypes.object.isRequired,
-    page: PropTypes.object.isRequired
+    page: PropTypes.object.isRequired,
+    fetchEvent: PropTypes.func.isRequired,
+    fetchByCategory: PropTypes.func.isRequired,
+    nextPage: PropTypes.func.isRequired,
+    prevPage: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -77,7 +90,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => (
     {
         fetchEvent: (city, country_code, country_name, meetup_category, eventbrite_category) => dispatch(fetchEvent(city, country_code, country_name, meetup_category, eventbrite_category)),
-        fetchByCategory: (city, country_code, country_name, category) => dispatch(fetchByCategory(city, country_code, country_name, category))
+        fetchByCategory: (city, country_code, country_name, category) => dispatch(fetchByCategory(city, country_code, country_name, category)),
+        nextPage: (page) => dispatch(nextPage(page)),
+        prevPage: (page) => dispatch(prevPage(page))
     }
 );
   

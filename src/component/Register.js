@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import dompurify from 'dompurify';
 import validator from 'validator';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { register } from './../actions/authActions';
+import appimg from './../img/akojopo.png';
 import './../css/register.css';
 
 class Register extends Component {
@@ -119,6 +120,24 @@ class Register extends Component {
         return (
             <section className="section">
                 <div className="container">
+                    <div className="columns">
+                        <div className="column is-three-Quaters">
+                            
+                        </div>
+                        <div className="column is-three-Quaters">
+                            <NavLink exact to={'/'} className="navbar-item">
+                                <img src={appimg} alt="confent" width="112" height="28" />
+                            </NavLink>
+                            <NavLink exact to={'/login'} className="button is-info is-outlined">
+                                <span className="icon">
+                                    <i className="fa fa-user"></i>
+                                </span>
+                                <span>
+                                    Login
+                                </span>
+                            </NavLink>
+                        </div>
+                    </div>
                     <div className="columns">
                         <div className="column is-1 is-hidden-mobile">
                         </div>

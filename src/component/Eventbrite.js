@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchEventbriteEvent, fetchEventbriteByCategory } from './../actions/eventbriteActions';
+import { nextPage, prevPage } from './../actions/paginationActions';
 import Event from './Event';
 import Sidebar from './Sidebar';
 import Loading from './Loading';
@@ -27,6 +28,14 @@ class Eventbrite extends PureComponent {
             this.props.fetchEventbriteEvent(this.props.country.name, this.props.category.eventbrite);
         }
     }
+    
+    handleNextPage = () => {
+        this.props.nextPage();
+    }
+
+    handlePrevPage = () => {
+        this.props.prevPage();
+    }
 
     render() {
         if (this.props.error.loading) {
@@ -48,7 +57,7 @@ class Eventbrite extends PureComponent {
                 <section className="section">
                     <div className="columns">
                         <Sidebar searchByCategory = {this.searchByCategory}/>
-                        <Event eventdata = {this.props.eventdata} />
+                        <Event eventdata = {this.props.eventdata} nextPage={this.handleNextPage} prevPage={this.handlePrevPage}/>
                     </div>
                 </section>
             );
@@ -77,7 +86,11 @@ Eventbrite.propTypes = {
 		noData: PropTypes.bool.isRequired
     }),
     eventdata: PropTypes.object.isRequired,
-    page: PropTypes.object.isRequired
+    page: PropTypes.object.isRequired,    
+    fetchEventbriteEvent: PropTypes.func.isRequired,
+    fetchEventbriteByCategory: PropTypes.func.isRequired,
+    nextPage: PropTypes.func.isRequired,
+    prevPage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -87,7 +100,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => (
     {
         fetchEventbriteEvent: (city, country_code, country_name, meetup_category, eventbrite_category) => dispatch(fetchEventbriteEvent(city, country_code, country_name, meetup_category, eventbrite_category)),
-        fetchEventbriteByCategory: (city, country_code, country_name, category) => dispatch(fetchEventbriteByCategory(city, country_code, country_name, category))
+        fetchEventbriteByCategory: (city, country_code, country_name, category) => dispatch(fetchEventbriteByCategory(city, country_code, country_name, category)),
+        nextPage: (page) => dispatch(nextPage(page)),
+        prevPage: (page) => dispatch(prevPage(page))
     }
 );
   

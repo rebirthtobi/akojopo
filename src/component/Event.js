@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './../css/events.css';
 import SingleEvent from './SingleEvent';
+import Pagination from './Pagination';
 
 class Event extends Component {
+
     render() {
         return (
             <div className="column is-three-quarters-tablet">
@@ -13,6 +15,14 @@ class Event extends Component {
                             return <SingleEvent item={item} key={index} index={index}/>;
                         }) }
                     </div>
+                </div>
+                <div>
+                    <Pagination 
+                        current={this.props.eventdata.currentPage} 
+                        pages={this.props.eventdata.page_number}
+                        nextPage={this.props.nextPage}
+                        prevPage={this.props.prevPage}
+                    />
                 </div>
             </div>
         );
@@ -24,7 +34,9 @@ Event.propTypes = {
 		currentPage: PropTypes.number.isRequired,
         page_number: PropTypes.number.isRequired,
         data: PropTypes.array.isRequired
-	}),
+    }),
+    nextPage: PropTypes.func.isRequired,
+    prevPage: PropTypes.func.isRequired
 }
 
 export default Event;
